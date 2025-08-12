@@ -1,11 +1,10 @@
 {
-  "name": "delayed-loader",
+  "name": "action-website",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "express": "^5.1.0"
   },
   "scripts": {
-    "start": "node server.js"
   }
 }
