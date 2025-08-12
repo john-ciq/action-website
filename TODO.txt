@@ -1,2 +1,2 @@
-* Document usage
+* Add instructions to README.md
 * Create unit tests in Postman
