@@ -21,6 +21,16 @@ const app = express();
 /**
  * Return the specified status code. If a page exists in "pages/status-NNN.html" (where NNN is an HTTP status code),
  * then that file will be sent. Otherwise, a generic status message will be sent.
+ *
+ * If an invalid HTTP status code is requested, the response will be a 501.
+ *
+ * Usage:
+ *  - http://localhost:3001/status/404
+ *    - This will return the contents of "pages/status-404.html"
+ *  - http://localhost:3001/status/403
+ *    - This will return a generic status message since "pages/status-403.html" does not exist
+ *  - http://localhost:3001/status/40003
+ *    - This will return a 501 because the status code is not valid
  */
 app.get('/status/:code', async (req, res) => {
     const code = parseInt(req.params.code);
@@ -40,6 +50,10 @@ app.get('/status/:code', async (req, res) => {
 
 /**
  * Waits for a specified number of milliseconds before returning the "wait" page.
+ *
+ * Usage:
+ *  - http://localhost:3001/wait/5000
+ *    - This will wait 5 seconds before returning the contents of "pages/wait.html"
  */
 app.get('/wait/:timeMS', (req, res) => {
     setTimeout(() => {
